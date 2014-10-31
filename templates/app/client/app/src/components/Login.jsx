@@ -25,14 +25,16 @@ var LOGIN  = React.createClass({
     };
 
     $.ajax({
-      type: 'GET',
+      type: 'POST',
       data: JSON.stringify(userData),
       contentType: 'application/json',
-      url: '/api/users/',
-      success: function(item) {
-        console.log('Successfully added: ', item);
+      dataType: 'html',
+      url: '/auth/local/',
+      success: function(data) {
+        window.location.assign('http://localhost:9000')
+        console.log('Successfully logged in');
       },
-      failure: function(item) {
+      failure: function() {
         console.log('Failed! OH NOOOO!');
       }
     });
